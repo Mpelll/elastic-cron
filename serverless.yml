@@ -1,0 +1,24 @@
+org: whoyaho
+app: elastic-cron
+service: elastic-cron
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: ap-northeast-1
+  role: arn:aws:iam::964619757379:role/lambda-sqs
+  environment:
+    API_KEY: ${param:API_KEY}
+    CLIENT_ID: ${param:CLIENT_ID}
+    INDEX: ${param:INDEX}
+
+functions:
+  rateHandler:
+    handler: handler.run
+    events:
+      # Invoke Lambda function every minute
+      - schedule: rate(1 minute)
+  cronHandler:
+    handler: handler.run
+    events:
+      # Invoke Lambda function every 2nd minute from Mon-Fri
+      - schedule: cron(0/2 * ? * MON-FRI *)

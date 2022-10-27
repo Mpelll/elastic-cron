@@ -1,0 +1,15 @@
+{
+  "name": "elastic-cron",
+  "version": "1.0.0",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "whoyaho",
+  "license": "ISC",
+  "dependencies": {
+    "@elastic/elasticsearch": "^8.4.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}
